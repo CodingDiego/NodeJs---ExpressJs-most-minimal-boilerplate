@@ -25,3 +25,71 @@ npm install typescript ts-node @types/node @types/express --save-dev
 npm install ts-node-dev --save-dev
 
 npx tsc --init
+```
+
+### 2. Install Dependencies
+
+```sh
+npm install express
+npm install typescript ts-node @types/node @types/express --save-dev
+npm install ts-node-dev --save-dev
+```
+
+### 3. Configure TypeScript
+
+```sh
+npx tsc --init
+```
+## Update the `tsconfig.json` with the following configuration.
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
+```
+### 4. Project Structure
+
+```sh
+mkdir src
+touch src/index.ts
+```
+
+### 5. Create Express Server
+
+```typescript
+import express, { Request, Response } from 'express';
+
+const app = express();
+const port = 3000;
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello, world!');
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+```
+
+### 6. Configure scripts
+
+```json
+"scripts": {
+  "start": "ts-node src/index.ts",
+  "build": "tsc",
+  "serve": "node dist/index.js",
+  "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+}
+```
+
