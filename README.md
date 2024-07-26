@@ -93,3 +93,16 @@ app.listen(port, () => {
 }
 ```
 
+## Running the project
+
+# To run the project in development mode
+
+```sh
+npm run dev
+pnpm run dev
+bun run dev
+```
+
+# No need to build & serve
+
+- Mostly because this is a boilerplate, if you are going to use it to build something anyway you're probably advance enough to do it yourself
